@@ -41,23 +41,15 @@ int main()
         cin >> n;
 
         vi arr(n);
-        int prev;
-        bool sorted = true;
 
         for (int i = 0; i < n; i++)
         {
             cin >> arr[i];
-
-            if(i != 0){
-                if(prev + 1 != arr[i]) sorted = false;
-            }
-
-            prev = arr[i];
         }
         
-        if(sorted) cout << 0 << endl;
-        else if(!sorted && (arr[0] == 1 || arr[arr.size() - 1] == n)) cout << 1 << endl;
-        else if(!sorted && (arr[0] == n && arr[arr.size() - 1] == 1)) cout << 3 << endl;
+        if(is_sorted(arr.begin(), arr.end())) cout << 0 << endl;
+        else if((arr[0] == 1 || arr[arr.size() - 1] == n)) cout << 1 << endl;
+        else if((arr[0] == n && arr[arr.size() - 1] == 1)) cout << 3 << endl;
         else cout << 2 << endl;
     }
         
