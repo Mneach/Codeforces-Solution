@@ -54,40 +54,22 @@ int main()
             cout << s << endl;
         }
         else{
-            bool checkSame = true;
-            if(s.length() < t.length()){
-                for (int i = 0; i < t.length(); i++)
-                {
-                    if(t[i] != s[i % s.length()]) checkSame = false;
-                }
+            int LCM = lcm(s.length() , t.length());
+            int lengthS = s.length();
+            int lengthT = t.length();
 
-            }else{
-                for (int i = 0; i < s.length(); i++)
-                {
-                    if(s[i] != t[i % t.length()]) checkSame = false;
-                }
+            for (int i = 0; i < LCM - lengthS; i++)
+            {
+                s += s[i % s.length()];
+            }
+            
+            for (int i = 0; i < LCM - lengthT; i++)
+            {
+                t += t[i % t.length()];
             }
 
-            if(checkSame) {
-                int LCM = lcm(s.length() , t.length());
-                int lengthS = s.length();
-                int lengthT = t.length();
-
-                for (int i = 0; i < LCM - lengthS; i++)
-                {
-                    s += s[i % s.length()];
-                }
-                
-                for (int i = 0; i < LCM - lengthT; i++)
-                {
-                    t += t[i % t.length()];
-                }
-
-                if(s == t) cout << s << endl;
-                else cout << -1 << endl;
-            }else{
-                cout << -1 << endl;
-            }
+            if(s == t) cout << s << endl;
+            else cout << -1 << endl;
         }
     }
     
